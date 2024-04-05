@@ -6,8 +6,11 @@ import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+import { useEffect, useContext } from "react";
+import { UserContext } from '../constants/UserContextProvider'
 
 const Contact = () => {
+  const { data } = useContext(UserContext)
   const formRef = useRef();
   const [form, setForm] = useState({
     name: "",
@@ -65,9 +68,29 @@ const Contact = () => {
   };
 
   return (
+
+    <>
+    <motion.div
+        variants={slideIn("left", "tween", 0.2, 1)}
+        className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
+      >
+        <div className="flex flex-wrap gap-2 justify-items-center  place-content-around"> 
+        <div><p className={styles.sectionSubText}>Phone Number: </p>
+        <p className='text-white font-medium mb-4'>+91-9876543210 </p></div>
+        
+        <div><p className={styles.sectionSubText}>Email: </p>
+        <p className='text-white font-medium mb-4'>portfolio3@gmail.com </p></div>
+        
+        <div><p className={styles.sectionSubText}>Address: </p>
+        <p className='text-white font-medium mb-4'>Los Angeles, America </p></div>
+        
+
+        </div>
+      </motion.div>
     <div
       className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
     >
+      
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
         className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
@@ -130,6 +153,7 @@ const Contact = () => {
         <EarthCanvas />
       </motion.div>
     </div>
+    </>
   );
 };
 

@@ -7,11 +7,14 @@ import {
   Preload,
   useTexture,
 } from "@react-three/drei";
+import { useEffect, useState, useContext } from "react";
+import {UserContext} from '../../constants/UserContextProvider'
 
 import CanvasLoader from "../Loader";
 
 const Ball = (props) => {
-  const [decal] = useTexture([props.imgUrl]);
+  
+  // const [decal] = useTexture([props.imgUrl]);
 
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
@@ -29,7 +32,7 @@ const Ball = (props) => {
           position={[0, 0, 1]}
           rotation={[2 * Math.PI, 0, 6.25]}
           scale={1}
-          map={decal}
+          map={props}
           flatShading
         />
       </mesh>
@@ -38,6 +41,7 @@ const Ball = (props) => {
 };
 
 const BallCanvas = ({ icon }) => {
+  const {data} = useContext(UserContext)
   return (
     <Canvas
       frameloop='demand'
@@ -46,7 +50,7 @@ const BallCanvas = ({ icon }) => {
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls enableZoom={false} />
-        <Ball imgUrl={icon} />
+        <Ball imgUrl={data?.user.skills.image.url} />
       </Suspense>
 
       <Preload all />

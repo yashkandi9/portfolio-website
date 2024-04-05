@@ -13,7 +13,7 @@ import { textVariant } from "../utils/motion";
 import { useEffect, useState, useContext } from "react";
 import { UserContext } from '../constants/UserContextProvider'
 
-const Experience = () => {
+const Education = () => {
   const { data } = useContext(UserContext)
 
   return (
@@ -23,23 +23,21 @@ const Experience = () => {
           What I have done so far
         </p>
         <h2 className={`${styles.sectionHeadText} text-center`}>
-          Work Experience.
+          Eucation.
         </h2>
       </motion.div>
 
       <div className='mt-20 flex flex-col'>
       {data?.user.timeline && data.user.timeline.filter(data => data.forEducation === true).length > 0 && (
-        <VerticalTimeline key={data._id}>
-          {data?.user.timeline.filter(data => data.forEducation === false).map(filteredData => (
+        <VerticalTimeline key={0}>
+          {data?.user.timeline.filter(data => data.forEducation === true).map(filteredData => (
 
-            <VerticalTimelineElement
-            key={filteredData._id}
+            <VerticalTimelineElement key={filteredData._id}
               contentStyle={{
                 background: "#1d1836",
                 color: "#fff",
               }}
               contentArrowStyle={{ borderRight: "7px solid  #232631" }}
-
             >
               <div>
                 <h3 className='text-white text-[24px] font-bold'>{filteredData.jobTitle}</h3>
@@ -75,4 +73,4 @@ const Experience = () => {
   );
 };
 
-export default SectionWrapper(Experience, "work");
+export default SectionWrapper(Education, "edu");

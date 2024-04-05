@@ -1,12 +1,14 @@
 import { BrowserRouter } from "react-router-dom";
 
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
-import UserContextProvider from "./constants/UserContextProvider";
+import { Hero, About, Contact, Education, Experience, Feedbacks, Navbar, Tech, Works, StarsCanvas } from "./components";
+// import UserContextProvider from "./constants/UserContextProvider";
 import Customquery from "./constants/Customquery";
+
+
 
 const App = () => {
   return (
-    <UserContextProvider>
+   
     <BrowserRouter>
       <Customquery />
       <div className='relative z-0 bg-primary'>
@@ -15,6 +17,7 @@ const App = () => {
           <Hero />
         </div>
         <About />
+        <Education />
         <Experience />
         <Tech />
         <Works />
@@ -25,8 +28,8 @@ const App = () => {
         </div>
       </div>
     </BrowserRouter>
-    </UserContextProvider>
+    
   );
 }
 
-export default App;
+export default App;
